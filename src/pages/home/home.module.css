@@ -1,0 +1,58 @@
+.conainer{
+    background-color: #FFEFEF;
+}
+
+
+.header {
+    background-color: #ED5353;
+    color: white;
+    margin: 0vh 0vw;
+    padding: 3vh 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0px 0px 50px 50px;
+    z-index: 1;
+}
+
+.shape1 {
+    position: absolute;
+    top: -3vh;
+    left: 40vw;
+    z-index: 2;
+}
+
+.shape2 {
+    height: 17.5vh;
+    position: absolute;
+    top: -2vh;
+    left: 70vw;
+    z-index: 2;
+}
+
+.btnGroup {
+    width: 15%;
+    display: flex;
+    margin-top: 0.5rem;
+    gap: 10px;
+    justify-content: space-around;
+}
+.login {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    z-index: 3;
+}
+
+.register {
+    background-color: white;
+    color: #ED5353;
+    border: 2px solid white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    z-index: 3;
+}
