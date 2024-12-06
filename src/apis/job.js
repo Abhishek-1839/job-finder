@@ -1,11 +1,8 @@
-import axios from "axios";
-
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
+import api from "./api";
 
 export const getJobDetailsById = async (jobId) => {
     try {
-        const reqUrl = `${backendUrl}/api/job/details/${jobId}`;
-        const response = await axios.get(reqUrl);
+        const response = await api.get(`/api/job/details/${jobId}`);
         return response.data;
     } catch (error) {
         console.error("Error fetching job details:", error.message);
@@ -15,10 +12,16 @@ export const getJobDetailsById = async (jobId) => {
 
 export const createJobPost = async (jobPostPayload) => {
     try {
-        const reqUrl = `${backendUrl}/api/job/`;
         const token = localStorage.getItem("token");
-        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-        const response = await axios.post(reqUrl, jobPostPayload);
+        const response = await api.post(
+            "/api/job/",
+            jobPostPayload,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
         return response.data;
     } catch (error) {
         console.error("Error creating job post:", error.message);
@@ -28,10 +31,16 @@ export const createJobPost = async (jobPostPayload) => {
 
 export const updateJobPostById = async (jobPostId, updatedFormData) => {
     try {
-        const reqUrl = `${backendUrl}/api/job/${jobPostId}`;
         const token = localStorage.getItem("token");
-        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-        const response = await axios.put(reqUrl, updatedFormData);
+        const response = await api.put(
+            `/api/job/${jobPostId}`,
+            updatedFormData,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
         return response.data;
     } catch (error) {
         console.error("Error updating job post:", error.message);
@@ -39,22 +48,10 @@ export const updateJobPostById = async (jobPostId, updatedFormData) => {
     }
 };
 
-// export const getAllJobPost = async (filter = {}) => {
-//     try {
-//         const query = new URLSearchParams(filter).toString();
-//         const reqUrl = `${backendUrl}/api/job/all-jobs?${query}`;
-//         const response = await axios.get(reqUrl);
-//         return response.data;
-//     } catch (error) {
-//         console.error("Error fetching all job posts:", error.message);
-//         throw new Error("Could not fetch job posts. Please try again later.");
-//     }
-// };
 export const getAllJobPost = async (filter = {}) => {
     try {
         const query = new URLSearchParams(filter).toString();
-        const reqUrl = `${backendUrl}/api/job/all-jobs?${query}`;
-        const response = await axios.get(reqUrl);
+        const response = await api.get(`/api/job/all-jobs?${query}`);
         return response.data;
     } catch (error) {
         console.error("Error fetching all job posts:", error.message);
@@ -62,17 +59,12 @@ export const getAllJobPost = async (filter = {}) => {
     }
 };
 
-// apis/job.js
 export const getAllSkills = async () => {
     try {
-        const response = await fetch("/api/job/skills"); // Replace with your actual API endpoint
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        return data.skills; // Assuming the response contains a `skills` array
+        const response = await api.get("/api/job/skills");
+        return response.data.skills; // Assuming the response contains a `skills` array
     } catch (error) {
         console.error("Error fetching skills:", error.message);
-        throw error;
+        throw new Error("Could not fetch skills. Please try again later.");
     }
 };

@@ -1,11 +1,8 @@
-import axios from "axios";
-
-const backendUrl = import.meta.env.VITE_BACKEND_URL
+import api from "./api";
 
 export const loginUser = async (email, password) => {
     try {
-        const reqUrl = `${backendUrl}/api/user/signin`;
-        const response = await axios.post(reqUrl, { email, password });
+        const response = await api.post("/api/user/signin", { email, password });
         return response.data;
     } catch (error) {
         console.error(error);
@@ -15,8 +12,7 @@ export const loginUser = async (email, password) => {
 
 export const registerUser = async ({ email, password, name, phone }) => {
     try {
-        const reqUrl = `${backendUrl}/api/user/signup`;
-        const response = await axios.post(reqUrl, { email, password, name, phone });
+        const response = await api.post("/api/user/signup", { email, password, name, phone });
         return response.data;
     } catch (error) {
         console.error(error);
