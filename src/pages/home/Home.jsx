@@ -16,15 +16,7 @@ export default function Home() {
     const [title, setTitle] = useState("");  // Title for search filter
     const [token] = useState(localStorage.getItem("token"));
     const [availableSkills, setAvailableSkills] = useState([]);
-    // const fetchAllJobs = async () => {
-    //     try {
-    //         const response = await getAllJobPost();  // Get all jobs without filters
-    //         setJobs(response.data || []);
-    //         setFilteredJobs(response.data || []); // Initialize filtered jobs with all fetched jobs
-    //     } catch (error) {
-    //         console.error("Error fetching jobs:", error.message);
-    //     }
-    // };
+
     const fetchAllJobs = async () => {
         try {
             const filter = {};
