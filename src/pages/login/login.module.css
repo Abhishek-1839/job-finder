@@ -1,118 +1,104 @@
-/* login.module.css */
 .container {
   display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-}
-
-.leftPanel {
-  flex: 1;
-  padding: 40px;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  background-color: #fff;
   align-items: center;
-}
-
-.signup{
-  margin-left: -188px;
-}
-
-.rightPanel {
-  flex: 1;
-  height: 100%;
-  background-image: url('/src/assets/home.png'); 
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: baseline;
   justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  /* background: linear-gradient(to bottom right, #f04d4d, #f78181); */
   color: #fff;
-  font-size: 24px;
+}
+
+h1 {
+  font-size: 2rem;
   font-weight: bold;
-}
-
-header {
-  text-align: left;
-  margin-top: 20px;
-}
-
-header h1 {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-header h3 {
-  font-size: 16px;
-  font-weight: 400;
-  color: #555;
-  margin-bottom: 30px;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 350px;
-}
-
-input {
-  width: 100%;
-  margin-bottom: 15px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-input:focus {
-  outline: none;
-  border-color: #666;
-}
-
-.error {
-  color: red;
-  font-size: 0.8rem;
-  margin-top: -10px;
   margin-bottom: 10px;
+  text-align: center;
 }
 
-button {
-  background-color: #f04d4d;
-  color: #fff;
-  padding: 10px;
+h2 {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 400;
+}
+
+.input {
+  width: 100%;
+  max-width: 400px;
+  padding: 15px;
+  margin-bottom: 20px;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 100px;
-  font-size: 16px;
-  font-weight: bold;
-  transition: background-color 0.3s;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+.input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(240, 77, 77, 0.5);
 }
 
-button:hover:not(:disabled) {
-  background-color: #e03e3e;
-}
-
-p {
-  font-size: 12px;
-  margin-top: 20px;
-}
-
-p a {
+.button {
+  width: 100%;
+  max-width: 400px;
+  padding: 15px;
+  background-color: #fff;
   color: #f04d4d;
-  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
   font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-p a:hover {
+.button:hover {
+  background-color: #f78181;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.footer {
+  color: #f04d4d;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.footer .underline {
+  color: #f04d4d;
+  font-weight: bold;
+  cursor: pointer;
   text-decoration: underline;
+}
+
+.footer .underline:hover {
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 0.9rem;
+  }
+
+  .input {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .button {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
 }

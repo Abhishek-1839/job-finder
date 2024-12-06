@@ -1,9 +1,10 @@
 import { useState } from "react";
-import toast from "react-hot-toast";
-import { createJob } from "../../services";
-import styles from "./Create.module.css";
+import { createJobPost } from "../../apis/job";
+import styles from "./create.module.css";
+import { useNavigate } from "react-router-dom";
 
-export default function Create() {
+export const JobPost = () => {
+    const navigate = useNavigate();
   const [formData, setFormData] = useState({
     companyName: "",
     logoURL: "",
@@ -18,47 +19,41 @@ export default function Create() {
     information: "",
   });
 
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = (event) => {
+    const { name, value } = event.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (Object.values(formData).some((field) => !field.trim())) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    const skillsArray = formData.skillsRequired
+      .split(",")
+      .map((skill) => skill.trim());
+    const jobPayload = { ...formData, skillsRequired: skillsArray };
+
     try {
-      setLoading(true);
-      const response = await createJob(formData);
-      toast.success(response.message || "Job created successfully!");
-      setFormData({
-        companyName: "",
-        logoURL: "",
-        position: "",
-        salary: "",
-        jobType: "",
-        remote: "",
-        location: "",
-        description: "",
-        about: "",
-        skillsRequired: "",
-        information: "",
-      });
+      await createJobPost(jobPayload);
+      alert("Job post created successfully!");
+      navigate("/")
+
     } catch (error) {
-      console.error("Error creating job:", error);
-      toast.error(error.message || "Failed to create job. Please try again.");
-    } finally {
-      setLoading(false);
+      alert("Failed to create job post.");
     }
   };
 
   return (
-    <>
-      <div className={styles.container}>
-        <h1 className={styles.h1}>Add job description</h1>
+    <div className={styles.container}>
+      <h1 className={styles.h1}>Add job description</h1>
+      <div className={styles.jobForm}>
         <div className={styles.jobForm}>
           <div className={styles.formGroup}>
             <label className={styles.label} htmlFor="companyName">
@@ -219,9 +214,6 @@ export default function Create() {
         </button>
         <button className={styles.cancel}>Cancel</button>
       </div>
-      <div className={styles.rightPanel}>
-        <p className={styles.rightPara}>Recruiter add job details here</p>
-      </div>
-    </>
+    </div>
   );
-}
+};

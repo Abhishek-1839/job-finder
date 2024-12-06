@@ -1,35 +1,30 @@
 .container {
   box-sizing: border-box;
-  padding: 5px 100px;
+  width: 50vw;
+  padding: 10vh 7vw;
   position: relative;
-  height: 100vh;
-  width: 90%;
 }
+/* .jobForm {
+} */
 
 .formGroup {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.5rem; 
-  width: 60%;
-  
+  font-size: 1.5rem;
+  margin: 1rem 0;
 }
 .h1 {
   font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.label{
-  font-size: 15px;
 }
 
 .input {
-  width: 70%;
+  width: 60%;
   border-radius: 6px;
   padding: 0.5em 0.2em;
+  float: left;
   border: 2px solid #c2c2c2;
-  margin-bottom: 5px;
 }
 
 .select {
@@ -38,9 +33,7 @@
   border: 2px solid #c2c2c2;
   color: #adadad;
   position: absolute;
-  left: 20.2vw;
-  width: 150px;
- 
+  left: 21vw;
 }
 
 .selectGroup {
@@ -55,9 +48,10 @@
   border: 0.848485px solid #cecece;
   border-radius: 6.50784px;
   padding: 1em 2em;
-  margin-left: 10px;
+  float: right;
+
+  margin-right: 16px;
   color: #adadad;
-  width: 150px;
 }
 
 .add {
@@ -67,28 +61,5 @@
   border: none;
   color: white;
   font-weight: 600;
-  width: 150px;
-  margin-left: 300px;
-}
-
-.rightPanel {
-  width: 40%; 
-  height: 100vh; 
-  position: absolute;
-  right: 0; 
-  top: 0; 
-  bottom: 0;
-  background-image: url('/src/assets/create.png');
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: center; 
-  
-}
-
-.rightPara{
-  color: #fff;
-  font-size: 40px;
-  font-weight: bold;
-
+  float: right;
 }
